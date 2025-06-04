@@ -21,7 +21,7 @@ $tabControl = new CAdminTabControl("tabControl", $aTabs);
 
 $provider = COption::GetOptionString($module_id, "provider", "openweather");
 $apiKey = COption::GetOptionString($module_id, "api_key", "");
-$defaultCity = COption::GetOptionString($module_id, "default_city", "moscow");
+$defaultCity = COption::GetOptionString($module_id, "city", "moscow");
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && check_bitrix_sessid()) {
     if (isset($_POST['api_key'])) {
@@ -30,8 +30,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && check_bitrix_sessid()) {
     if (isset($_POST['provider'])) {
         COption::SetOptionString($module_id, "provider", $_POST["provider"]);
     }
-    if (isset($_POST['default_city'])) {
-        COption::SetOptionString($module_id, "default_city", $_POST["default_city"]);
+    if (isset($_POST['city'])) {
+        COption::SetOptionString($module_id, "city", $_POST["city"]);
     }
 
     LocalRedirect($APPLICATION->GetCurPage() . "?mid=" . urlencode($module_id) . "&lang=" . LANGUAGE_ID);
@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && check_bitrix_sessid()) {
 
 $apiKey = COption::GetOptionString($module_id, "api_key", "");
 $provider = COption::GetOptionString($module_id, "provider", "openweather");
-$defaultCity = COption::GetOptionString($module_id, "default_city", "Moscow");
+$defaultCity = COption::GetOptionString($module_id, "city", "Moscow");
 
 $tabControl->Begin();
 ?>
@@ -68,7 +68,7 @@ $tabControl->Begin();
     <tr>
         <td>Город по умолчанию:</td>
         <td>
-            <select name="default_city">
+            <select name="city">
                 <option value="moscow" <?= ($defaultCity === "moscow") ? "selected" : "" ?>>Москва</option>
                 <option value="saint-petersburg" <?= ($defaultCity === "saint-petersburg") ? "selected" : "" ?>>
                     Санкт-Петербург
