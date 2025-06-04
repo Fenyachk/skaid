@@ -1,0 +1,2 @@
+<?php
+$MESS['WEATHER_FORECAST_TAB_SETTINGS'] = 'Настройки';
