@@ -1,8 +1,13 @@
 <?php
-\Bitrix\Main\Loader::registerAutoLoadClasses(
+
+use Bitrix\Main\Loader;
+
+Loader::registerAutoLoadClasses(
     "weather.forecast",
     [
-        "WeatherForecast\\WeatherApi" => "lib/WeatherApi.php",
+        "Weather\\Forecast\\OpenWeatherProvider"     => "lib/OpenWeatherProvider.php",
+        "Weather\\Forecast\\WeatherApiProvider"      => "lib/WeatherApiProvider.php",
+        "Weather\\Forecast\\WeatherProviderFactory"  => "lib/WeatherProviderFactory.php",
+        "Weather\\Forecast\\WeatherProviderInterface"=> "lib/WeatherProviderInterface.php",
     ]
 );
-?>
